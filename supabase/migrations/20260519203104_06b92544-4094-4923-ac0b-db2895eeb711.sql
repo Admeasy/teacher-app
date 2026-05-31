@@ -1,0 +1,3 @@
+
+ALTER TABLE public.non_teaching_staff ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.upload_logs ENABLE ROW LEVEL SECURITY;

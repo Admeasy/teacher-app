@@ -1,0 +1,1 @@
+CREATE POLICY "members update own workspace" ON public.workspaces FOR UPDATE TO authenticated USING (public.is_workspace_member(id)) WITH CHECK (public.is_workspace_member(id));

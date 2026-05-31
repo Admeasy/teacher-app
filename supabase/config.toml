@@ -1,0 +1,23 @@
+project_id = "bhjtsmveghanbojpbswk"
+
+[functions.school-search]
+verify_jwt = false
+
+[functions.teacher-send-otp]
+verify_jwt = false
+
+[functions.teacher-verify-otp]
+verify_jwt = false
+
+[functions.tts]
+verify_jwt = false
+
+[functions.voice-session]
+verify_jwt = false
+
+[functions.workspace-rag-worker]
+verify_jwt = false
+
+[functions.leave-email-dispatch]
+verify_jwt = false
+

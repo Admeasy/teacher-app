@@ -1,0 +1,4 @@
+
+ALTER TABLE public.timetable ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.timetable_settings ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.class_assignments ENABLE ROW LEVEL SECURITY;

@@ -19,6 +19,15 @@ export const metadata: Metadata = {
   title: "Admeasy Teacher",
   description: "Standalone Admeasy ERP teacher portal",
   appleWebApp: { capable: true, title: "Admeasy Teacher" },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/favicon-32x32.png", type: "image/png", sizes: "32x32" },
+      { url: "/favicon-16x16.png", type: "image/png", sizes: "16x16" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/favicon-32x32.png",
+  },
 };
 
 export const viewport: Viewport = {

@@ -23,7 +23,7 @@ export default function AppShell({ children, contextLabel }: Props) {
   useAIRealtime(workspaceId);
 
   return (
-    <div className="h-screen w-full bg-background text-foreground flex overflow-hidden">
+    <div className="min-h-screen w-full bg-background text-foreground flex overflow-hidden">
       <LeftSidebar
         collapsed={sidebarCollapsed}
         onToggle={() => setSidebarCollapsed(c => !c)}

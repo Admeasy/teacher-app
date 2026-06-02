@@ -40,6 +40,9 @@ export const viewport: Viewport = {
   ],
 };
 
+import MobileViewport from "@/components/MobileViewport";
+import CapacitorApp from "@/components/CapacitorApp";
+
 export default function RootLayout({
   children,
 }: {
@@ -48,13 +51,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       suppressHydrationWarning
     >
       <head>
         <ThemeScript />
       </head>
-      <body className="min-h-full min-h-[100dvh] flex flex-col bg-background text-foreground">
+      <body className="bg-background text-foreground overflow-x-hidden">
+        <MobileViewport />
+        <CapacitorApp />
         <Providers>{children}</Providers>
       </body>
     </html>

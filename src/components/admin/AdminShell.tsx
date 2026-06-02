@@ -11,10 +11,10 @@ import ThemeToggle from "@/components/ui/ThemeToggle";
 
 const navItems = [
   { to: "/admin/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-  { to: "/admin/schools",   icon: School,          label: "Manage Schools" },
-  { to: "/admin/knowledge", icon: BookOpen,        label: "Knowledge Base" },
-  { to: "/admin/ai-logs",   icon: Sparkles,        label: "AI Observability" },
-  { to: "/admin/settings",  icon: SettingsIcon,    label: "Settings" },
+  { to: "/admin/schools", icon: School, label: "Manage Schools" },
+  { to: "/admin/knowledge", icon: BookOpen, label: "Knowledge Base" },
+  { to: "/admin/ai-logs", icon: Sparkles, label: "AI Observability" },
+  { to: "/admin/settings", icon: SettingsIcon, label: "Settings" },
 ];
 
 export default function AdminShell({ children, title }: { children: ReactNode; title?: string }) {
@@ -46,11 +46,10 @@ export default function AdminShell({ children, title }: { children: ReactNode; t
             key={it.to}
             href={it.to}
             onClick={() => setMobileOpen(false)}
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all ${
-              pathname === it.to || (pathname?.startsWith(`${it.to}/`) ?? false)
+            className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm transition-all ${pathname === it.to || (pathname?.startsWith(`${it.to}/`) ?? false)
                 ? "bg-violet/15 text-foreground border border-violet/30"
                 : "text-muted-foreground hover:bg-muted/40 hover:text-foreground"
-            }`}
+              }`}
           >
             <it.icon className="h-4 w-4" />
             {it.label}
@@ -71,7 +70,7 @@ export default function AdminShell({ children, title }: { children: ReactNode; t
   );
 
   return (
-    <div className="h-screen w-full bg-background text-foreground flex overflow-hidden">
+    <div className="min-h-screen w-full bg-background text-foreground flex overflow-hidden">
       {/* Desktop sidebar */}
       <aside className="hidden md:flex w-64 glass-strong border-r border-border/40 flex-col">
         {SidebarBody}

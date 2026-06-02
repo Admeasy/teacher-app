@@ -85,7 +85,7 @@ export default function TeacherLayout({
   );
 
   return (
-    <div className="min-h-screen h-[100dvh] bg-background text-foreground flex overflow-hidden">
+    <div className="min-h-screen h-[var(--app-height,100dvh)] bg-background text-foreground flex overflow-hidden">
       <SidebarShell
         config={navigation}
         logoSlot={logoSlot}

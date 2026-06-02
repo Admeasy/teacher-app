@@ -19,7 +19,7 @@ import {
 export default function SelectSchool() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const next = searchParams.get("next") || "/login";
+  const next = searchParams?.get("next") || "/login";
 
   const [query, setQuery] = useState("");
   const [results, setResults] = useState<ActiveWorkspace[]>([]);
@@ -71,7 +71,7 @@ export default function SelectSchool() {
   }
 
   return (
-    <div className="min-h-screen min-h-[100dvh] bg-background relative">
+    <div className="min-h-screen min-h-[100dvh] bg-background relative overflow-y-auto">
       <PageSeo
         title="Find Your School — Admeasy"
         description="Pick your school to log into Admeasy Teacher."

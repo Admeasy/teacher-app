@@ -132,7 +132,7 @@ function SidebarBody({ config, logoSlot, footerSlot, onSignOut, collapsed, onTog
   collapsed: boolean; onToggleCollapsed: () => void; onNavigate?: () => void;
 }) {
   return (
-    <div className="h-full flex flex-col glass border-r border-border/40">
+    <div className="h-full flex-1 flex flex-col glass-strong border-r border-border/40 overflow-hidden">
       <div className={cn("p-3 flex items-center border-b border-border/40", collapsed ? "justify-center" : "gap-3")}>
         {logoSlot}
       </div>
@@ -208,18 +208,20 @@ export default function SidebarShell({ config, logoSlot, footerSlot, onSignOut, 
             <motion.aside
               initial={{ x: -280 }} animate={{ x: 0 }} exit={{ x: -280 }}
               transition={{ type: "spring", stiffness: 320, damping: 32 }}
-              className="fixed left-0 top-0 bottom-0 w-[272px] z-50 md:hidden"
+              className="fixed left-0 top-0 bottom-0 w-[280px] z-50 md:hidden bg-background"
             >
-              <div className="absolute top-3 right-3 z-10">
-                <button onClick={onMobileClose} className="p-1.5 rounded-md text-muted-foreground hover:text-foreground bg-surface-2">
-                  <X size={16} />
+              <div className="absolute top-[calc(1.25rem+env(safe-area-inset-top))] right-4 z-10">
+                <button onClick={onMobileClose} className="p-2 rounded-xl text-muted-foreground hover:text-foreground bg-surface-2/80 backdrop-blur-md border border-border/40 shadow-xl active:scale-95 transition-transform">
+                  <X size={18} />
                 </button>
               </div>
-              <SidebarBody
-                config={config} logoSlot={logoSlot} footerSlot={footerSlot} onSignOut={onSignOut}
-                collapsed={false} onToggleCollapsed={() => {}}
-                onNavigate={onMobileClose}
-              />
+              <div className="h-full flex flex-col pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]">
+                <SidebarBody
+                  config={config} logoSlot={logoSlot} footerSlot={footerSlot} onSignOut={onSignOut}
+                  collapsed={false} onToggleCollapsed={() => { }}
+                  onNavigate={onMobileClose}
+                />
+              </div>
             </motion.aside>
           </>
         )}

@@ -17,7 +17,9 @@ import SelectedSchoolChip from "@/components/auth/SelectedSchoolChip";
 export default function Login() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const next = searchParams.get("next") || "/teacher/dashboard";
+  const next = searchParams?.get("next") ?? "/teacher/dashboard";
+  console.log(searchParams);
+  console.log(searchParams?.get("next"));
   const ws = getActiveWorkspace();
   const { login, isAuthed } = useTeacherSession();
 
@@ -82,16 +84,17 @@ export default function Login() {
   }
 
   return (
-    <div className="min-h-screen min-h-[100dvh] grid place-items-center p-6 bg-background relative">
+    <div className="min-h-screen min-h-[100dvh] flex flex-col items-center p-6 bg-background relative overflow-y-auto">
       <PageSeo title="Teacher sign in — Admeasy" description="Secure OTP login for teachers." path="/login" />
-      <div className="absolute top-4 right-4 z-20 pb-[env(safe-area-inset-top)] pr-[env(safe-area-inset-right)]">
+
+      <div className="absolute top-4 right-4 z-20">
         <ThemeToggle compact />
       </div>
 
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
-        className="w-full max-w-md"
+        className="w-full max-w-md my-auto flex flex-col py-8"
       >
         <div className="flex flex-col items-center gap-3 mb-8">
           <AdmeasyLogo size={72} state="idle" />
@@ -134,7 +137,7 @@ export default function Login() {
                 <button
                   type="submit"
                   disabled={busy}
-                  className="mt-2 gradient-violet text-white text-sm font-semibold py-3 rounded-xl flex items-center justify-center gap-2 hover:glow-violet-strong transition-all disabled:opacity-50"
+                  className="mt-2 gradient-violet text-white text-sm font-semibold py-3 rounded-xl flex items-center justify-center gap-2 hover:glow-violet-strong transition-all disabled:opacity-50 active:scale-[0.98]"
                 >
                   {busy ? (
                     <Loader2 size={16} className="animate-spin" />
@@ -167,11 +170,12 @@ export default function Login() {
                   onChange={(v) => setCode(v.replace(/\D/g, "").slice(0, 6))}
                   placeholder="••••••"
                   autoComplete="one-time-code"
+                  type="tel"
                 />
                 <button
                   type="submit"
                   disabled={busy}
-                  className="gradient-violet text-white text-sm font-semibold py-3 rounded-xl flex items-center justify-center gap-2 hover:glow-violet-strong transition-all disabled:opacity-50"
+                  className="gradient-violet text-white text-sm font-semibold py-3 rounded-xl flex items-center justify-center gap-2 hover:glow-violet-strong transition-all disabled:opacity-50 active:scale-[0.98]"
                 >
                   {busy ? (
                     <Loader2 size={16} className="animate-spin" />
@@ -187,7 +191,7 @@ export default function Login() {
                     setStep(1);
                     setCode("");
                   }}
-                  className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 justify-center"
+                  className="text-xs text-muted-foreground hover:text-foreground flex items-center gap-1 justify-center py-2"
                 >
                   <ArrowLeft size={12} /> Use a different ID
                 </button>
@@ -196,6 +200,9 @@ export default function Login() {
           </AnimatePresence>
         </div>
       </motion.div>
+
+      {/* Spacer to ensure scrolling room above keyboard */}
+      <div className="h-20 md:hidden shrink-0" />
     </div>
   );
 }
